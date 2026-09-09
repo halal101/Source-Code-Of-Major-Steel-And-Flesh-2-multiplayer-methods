@@ -2,10 +2,6 @@
 
 This repository contains decompiled C++ source code for major multiplayer methods from a Steel and Flesh 2 multiplayer game, extracted using IL2CPP reverse engineering. Each file follows the IDA Pro / Hex-Rays decompilation format with method signatures, offsets, and RVA addresses.
 
-## Repository Overview
-
-This repo has evolved through multiple commits, adding methods related to Photon networking and game management. The methods cover core multiplayer functionality including connection management, player spawning, and master client operations.
-
 ## Current Files in Repository
 
 | File | Method | Signature | Offset | RVA | First Added |
@@ -15,7 +11,7 @@ This repo has evolved through multiple commits, adding methods related to Photon
 | `sc_game__SpawnHorse.cpp` | sc_game::SpawnHorse | `void __fastcall sc_game__SpawnHorse(const MethodInfo *method)` | `0x156E678` | `0x1572678` | Initial commit |
 | `sc_game__SpawnSiege.cpp` | sc_game::SpawnSiege | `void __fastcall sc_game__SpawnSiege(const MethodInfo *method)` | `0x156E6E0` | `0x15726E0` | Initial commit |
 | `NetworkingPeer__DestroyAll.cpp` | NetworkingPeer::DestroyAll | `void __fastcall NetworkingPeer__DestroyAll(const MethodInfo *method)` | `0x156ED58` | `0x1572D58` | v1 (ae0e3ab) |
-| `Assembly-CSharp/PhotonNetwork::SetMasterClient.cpp` | PhotonNetwork::SetMasterClient | `bool PhotonNetwork::SetMasterClient(PhotonPlayer* masterClientPlayer, const MethodInfo* method)` | `0x156DED4` | `0x1571ED4` | v2 (2ab23ff) |
+| `PhotonNetwork__SetMasterClient.cpp` | PhotonNetwork::SetMasterClient | `bool PhotonNetwork::SetMasterClient(PhotonPlayer* masterClientPlayer, const MethodInfo* method)` | `0x156DED4` | `0x1571ED4` | v2 (2ab23ff) |
 
 ## Method Descriptions
 
@@ -81,16 +77,6 @@ Each method follows this format:
 // C++ Source: [followed by decompiled source]
 ```
 
-## commit History
-
-| Commit | Author | Description |
-|--------|--------|-------------|
-| `7fd1014` | Initial | Repository creation with LICENSE and README |
-| `9ce77c3` | halal101 | Created PhotonNetwork::CloseConnection.cpp |
-| `b6f67ff` | halal101 | Added SetMasterClient Code (Assembly-CSharp/PhotonNetwork::SetMasterClient) |
-| `2ab23ff` | halal101 | Added SetMasterClient Code (updated version) |
-| `ae0e3ab` | halal101 | Add DestroyAll Code (Assembly-CSharp/PhotonNetwork::DestroyAll) |
-| `b0bfe67` | Researcher | Add IL2CPP decompiled source code for major multiplayer methods (current HEAD) |
 
 ## Usage
 
