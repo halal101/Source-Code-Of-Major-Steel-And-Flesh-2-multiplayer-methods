@@ -6,12 +6,13 @@ This repository contains decompiled C++ source code for major multiplayer method
 
 | File | Method | Signature | Offset | RVA | First Added |
 |------|--------|-----------|--------|-----|-------------|
-| `PhotonNetwork__CloseConnection.cpp` | PhotonNetwork::CloseConnection | `void __fastcall PhotonNetwork__CloseConnection(const MethodInfo *method)` | `0x156E5D8` | `0x15725D8` | Initial commit |
-| `sc_game__FindPlayerInfo.cpp` | sc_game::FindPlayerInfo | `void __fastcall sc_game__FindPlayerInfo(const MethodInfo *method)` | `0x156E620` | `0x1572620` | Initial commit |
-| `sc_game__SpawnHorse.cpp` | sc_game::SpawnHorse | `void __fastcall sc_game__SpawnHorse(const MethodInfo *method)` | `0x156E678` | `0x1572678` | Initial commit |
-| `sc_game__SpawnSiege.cpp` | sc_game::SpawnSiege | `void __fastcall sc_game__SpawnSiege(const MethodInfo *method)` | `0x156E6E0` | `0x15726E0` | Initial commit |
-| `NetworkingPeer__DestroyAll.cpp` | NetworkingPeer::DestroyAll | `void __fastcall NetworkingPeer__DestroyAll(const MethodInfo *method)` | `0x156ED58` | `0x1572D58` | v1 (ae0e3ab) |
-| `PhotonNetwork__SetMasterClient.cpp` | PhotonNetwork::SetMasterClient | `bool PhotonNetwork::SetMasterClient(PhotonPlayer* masterClientPlayer, const MethodInfo* method)` | `0x156DED4` | `0x1571ED4` | v2 (2ab23ff) |
+| `Assembly-CSharp/PhotonNetwork__CloseConnection.cpp` | PhotonNetwork::CloseConnection | `void __fastcall PhotonNetwork__CloseConnection(const MethodInfo *method)` | `0x156E5D8` | `0x15725D8` | Initial commit |
+| `Assembly-CSharp/sc_game__FindPlayerInfo.cpp` | sc_game::FindPlayerInfo | `void __fastcall sc_game__FindPlayerInfo(const MethodInfo *method)` | `0x156E620` | `0x1572620` | Initial commit |
+| `Assembly-CSharp/sc_game__SpawnHorse.cpp` | sc_game::SpawnHorse | `void __fastcall sc_game__SpawnHorse(const MethodInfo *method)` | `0x156E678` | `0x1572678` | Initial commit |
+| `Assembly-CSharp/sc_game__SpawnSiege.cpp` | sc_game::SpawnSiege | `void __fastcall sc_game__SpawnSiege(const MethodInfo *method)` | `0x156E6E0` | `0x15726E0` | Initial commit |
+| `Assembly-CSharp/NetworkingPeer__DestroyAll.cpp` | NetworkingPeer::DestroyAll | `void __fastcall NetworkingPeer__DestroyAll(const MethodInfo *method)` | `0x156ED58` | `0x1572D58` | v1 (ae0e3ab) |
+| `Assembly-CSharp/PhotonNetwork::SetMasterClient.cpp` | PhotonNetwork::SetMasterClient | `bool PhotonNetwork::SetMasterClient(PhotonPlayer* masterClientPlayer, const MethodInfo* method)` | `0x156DED4` | `0x1571ED4` | v2 (2ab23ff) |
+| `Assembly-CSharp/sc_main_menu__Join.cpp` | sc_main_menu::Join | `void __fastcall sc_main_menu__Join(const MethodInfo *method)` | `0x156F218` | `0x1573218` | Current HEAD |
 
 ## Method Descriptions
 
@@ -56,8 +57,15 @@ This repository contains decompiled C++ source code for major multiplayer method
 - Validates: must be in a room, network must be ready
 - Validates: peer must be connected
 - Validates: checks if already master client
-- If game room: creates Hashtable with MasterClientId (0xF8), sends via OpSetPropertiesOfRoom
-- If not game room: checks IsMasterClient, sets directly via peer->SetMasterClient
+- **Game room:** Creates Hashtable with MasterClientId (0xF8), sends via OpSetPropertiesOfRoom
+- **Non-game room:** Checks IsMasterClient, sets directly via peer->SetMasterClient()
+
+### 7. sc_main_menu::Join
+**Purpose:** Join a multiplayer game session from the main menu.
+- Triggers the UI flow for joining a game
+- Supports multiple join modes: QuickMatch, CustomGame, FriendsOnly, Default
+- Validates join configuration before attempting connection
+- Navigates to appropriate join screen based on game mode
 
 ## Technical Details
 
@@ -76,8 +84,6 @@ Each method follows this format:
 // RVA/VA: 0x[hex_rva]
 // C++ Source: [followed by decompiled source]
 ```
-
-
 ## Usage
 
 These source files are intended for:
